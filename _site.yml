@@ -1,0 +1,17 @@
+name: "R in an HR"
+navbar:
+  title: "R in an HR"
+  type: inverse
+  toc: true
+  toc_float: true
+  toc_collapsed: true
+  toc_depth: 3
+output:
+  html_document:
+    theme: cerulean
+    highlight: tango
+    css: mained.css
+    number_sections: true
+    includes:
+      after_body: footer.html
+      before_body: header.html

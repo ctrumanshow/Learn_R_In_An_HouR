@@ -1,0 +1,47 @@
+---
+title: " "
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 3
+    number_sections: true
+  rmdformats::material:
+    self_contained: true
+
+---
+
+<br><br><br><br><br>
+```{r include=FALSE}
+library(rmdformats)
+```
+***
+## Introduction to Exercises!
+***
+<div style="text-align: center;" markdown="0">
+
+exercises hre
+
+
+
+***
+## Exerises for The Basics
+***
+
+1) Using variables, show why 23 is a prime number and 22 isn't. <br>
+*Tip: use numerical operators which are part of base R!<br>
+
+2) Make 3 variables and show that they have 3 different classes.<br>
+
+
+
+
+***
+## Solutions: The Basics
+***
+
+
+
+</div>

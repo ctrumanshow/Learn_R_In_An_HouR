@@ -1,0 +1,24 @@
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *For loops*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Learn to use for loops!
+Learn the syntax of a for loop<br>
+Learn the additions of if and whilst statements<br>
+Use for and if loops in data analysis
+</div>
+***
+
+For loops are my favourite thing to do as a programmer. They are something most people learn early on (in a handful of languages) because they help you understand the semantics of whichever language you're in so well. In my opinion, they are one of the best tools to use when trying to *read* code in a human way. But...
+<br><br>
+I have a confession to make. <br><br>
+
+You shouldn't use them much in R. 

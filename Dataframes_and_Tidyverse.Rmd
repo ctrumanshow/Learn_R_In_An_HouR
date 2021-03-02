@@ -1,0 +1,20 @@
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *Dataframes and Tidyverse*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Navigating dataframes!
+-Learn to import dataframes<br>
+-Learn to manipulate subsets of dataframes<br>
+-Start using the tidyverse<br>
+</div>
+***
+
+Stuff here!!

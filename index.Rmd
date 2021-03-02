@@ -1,0 +1,633 @@
+---
+title: " "
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 3
+    number_sections: true
+
+
+---
+
+<br><br><br><br><br>
+```{r include=FALSE}
+library(rmdformats)
+library(dplyr)
+```
+***
+## Welcome to R in an HR!
+***
+<div style="text-align: center;" markdown="0">
+The idea behind this course is that you, the future top-tier programmer, can learn R and do really cool things with it very quickly. For this reason, the main facets of R are briefly (but hopefully *clearly*) explained. There is a 'learn' section and a 'create' section, so you can learn the skills and then do awesome data analysis using them. R in an HR should take you from being a complete beginner to being confident in how to navigate R and use it for data analysis. *Note: the brevity of this course means that details have been left out. For a longer and more detailed guide to learning R, I highly recommend [this resource](https://r4ds.had.co.nz/transform.html).*<br><br>
+I remember when I wanted to learn R; I came across a lot of hokey guides on *'but what **is** R?'*. If you're anything like me, and want to learn how to program *right now*, then you've come to the right place. R is a programming language. You know that. You can use it as a calculator, simulator (think: machine learning), statistical processor and more. Let's get straight down to business. <br>
+
+***
+##### About me {-}
+***
+
+I'm a PhD student studying at the University of Oxford. My research mostly focuses on the proteins of HIV (you can learn more [here](https://ctrumanshow.github.io/DphilCTruman/) if you're interested!), but I learned to program in R - at first, to aid my data analysis, and then I fell a little in love with it! So I wanted to share what I was learning. Whether you take this short course at the DTC with me there, or at home as a learning aid, you can always reach me for questions at catherine.truman@trinity.ox.ac.uk. I also always appreciate feedback, so if anything in my short course is unclear, let me know, and I'll try to make it better!
+<br><br>
+Happy coding!
+![This is me and my lab at Oxford](C:/Users/Greye/Music/bah/lab.png)
+
+<br><br><br><br>
+
+***
+## *The Basics*
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Start using R  {-}
+Download RStudio<br>
+Get acquainted with the environment<br>
+Get to know basic variables
+</div>
+***
+
+
+If you haven't already downloaded R, let's start.  <br>
+You can use R in different 'ways,' primarily: <br>
+(1) From the 'command line', which is called terminal in Windows. <br>
+(2) From RStudio, a Graphics User Interface (GUI), which is R embedded in an interface with nice icons and interactable buttons<br>
+Naturally, RStudio is where most users start. GUIs are friendlier - they wrap plain, intimidating code in a nice format which anyone can understand. So, go to [this link](https://rstudio.com/products/rstudio/download/) and download RStudio:<br>
+
+Open RStudio. You should see three main 'areas.' You can think of them as *'store,' 'see,'* and *'say'* areas. In the image below, the yellow box contains the script and console - where you *say* what your coding instructions are. The script (top part) is where write code and save it. When you run the code, it is processed in real time through the console, the box below. In the console, you will see the code run smoothly and output expected statements - or <span style="color:red">red error messages</span>, if something was wrong. <br><br>
+
+
+![The general organisation of RStudio - yours will be much emptier than mine!](C:/Users/Greye/Music/bah/RStudio.png)
+
+To illustrate this, try typing 2+2 into the script area, and press 'Run' in the top right corner (make sure your cursor in on the same line as the code; you can also use ctrl+enter as a shorthand). 
+
+```{r}
+
+2 + 2
+
+```
+You should see the console below print your command and process it to print the answer '2'. If you want a simple answer, like 2+2, you can just type straight in the console. If you want to save your work, I'd recommend the script box for now. 
+
+<span style="color:blue">**TOP TIP**</span>: *Be aware that new versions of R come out regularly, you can go to Help > Check For Updates in the toolbar to check this.<br>*
+
+So, the next part: the 'store' area. Here, variables and data that you create are stored. There are 3 main tabs - **Environment** is where your data and variables get stored. Make sure you are on that tab. Let's make a variable so you can see it get stored. A *variable* is simply a symbol to store data. Let's store the answer to *'2+8'* in a variable called *Answer*. You can assign a variable using an arrow:
+
+```{r}
+
+Answer <- 2 + 8
+
+```
+
+You should now see in the **Environment** tab the variable *Answer* and it's stored data. If we summon - or *call* - our variable *Answer*, we get the data behind the symbol:
+```{r}
+Answer
+```
+
+You can replace the word 'Answer' with anything you like. Be aware of some rules which are handy when assigning variables...
+
+***
+##### Rules for variables {-} 
+<br>(1) In R there are some symbols that come as part of the *base program* which are already defined. For example, mathematical operators like *=*. If you try and use these, things will get confusing!<br>
+(2) R is case-sensitive. Try to call *answer* and you won't get 4 - that's because we used a capital letter.<br>
+(3) Get in to the habit of good coding practices: don't name your variable vaR14i_mYF1RSTV4rIABL3 because it's not particularly human-readable or clear (you can find a list of common naming conventions  [here](https://www.chaseadams.io/most-common-programming-case-types/).) 
+
+***
+
+Consider the **Environment** window as your coding pantry. If you're cooking, this is where all of your ingredients are stored.  
+
+<span style="color:blue">**TOP TIP**</span>: If your pantry is overflowing, cooking is harder. Stay organised! The brush button in this section clears all stored data in case you want to begin again. <br>
+
+Okay, so you now know how to assign a variable. Variables are your bread and butter, and you can do a lot with them. Try this in your RStudio:
+```{r}
+
+Variable1 <- 4
+
+Answer <- ( Variable1 * Variable1 * Variable1)
+Square_Root <- sqrt(Answer)
+
+```
+
+Here, we assign the value of 4 to a new variable called *Variable1.*
+We then multiply '*Variable1* by itself three times and square root the answer. 
+
+I'm showing you 3 things here:
+(1) You can do mathematical equations on variables - R just looks at the data asigned behind the symbol.
+(2) You can re-value variables. We previously gave *Answer* the value of 10. If you look at the Environment window now, *Answer* has a value of 64. R takes the last assignment.
+(3) I mentioned variables of *base R* before - these are the parts of R which come built-in and can't be changed. **sqrt** is part of *base R* - it's a *function* that square roots whatever number is given to it. Don't worry about what a function is - we'll cover that later. For now, hopefully you can see why it'd be confusing to use *sqrt* as a variable name.
+
+I mentioned errors before - hopefully you have seen nothing but black text in your console so far; when an error appears, it'll be red. Errors are incredibly useful. Let me show you why. Type this into your Studio;
+```{r}
+
+Answer == 64
+
+```
+
+What this statement says, is: *the variable Answer equates to the value 64*. R checks this and returns 'TRUE', since this statement is true. Now change '==' to '===':
+```{r eval = FALSE}
+Answer === 64
+```
+You should see an error in your console:<br>
+<div style="text-align: center;" markdown="1"><span style="color:red">Error: unexpected '=' in "Answer ==="</span><br></div>
+R is telling us there are too many equals signs. This is why errors are so useful. If you're not sure how to code something, just try writing a statement - and then let R tell you where you are going wrong, so you can correct yourself. 
+
+But when you're being a badass coder on the day to day you won't be dealing exclusively with hiding numbers behind names. Let's talk about *types* of data. R considers multiple data types. Some of the most common:<br>
++Numeric
++Character
++Integer
++Logical
++Complex.<br>
+Let's start easy. You can find out what type - or *class* - data is by using the following function: class(*the data*).
+Let's try the variable we just made: 
+
+```{r}
+class(Answer)
+```
+Simple enough. The data is a number, which R recognises as numeric data. While a single number counts, often you'll see higher-order numeric structures, like vectors or matrices. We'll cover these later, but suffice it to say that R handles lists of numbers very well. For example, you can concatenate numbers in a vector using **c()**:
+
+```{r}
+
+vector <- c(3,4,5,6)
+vector
+
+```
+
+You can use a colon to go between two numbers - this reads 'from 1 to 10:'
+
+```{r}
+numbers <- 1:10
+```
+
+This series of whole numbers has the class integer:
+
+```{r}
+class(numbers)
+```
+Character is equally simple. It's characters, words - also known as *strings* in coding:
+
+```{r}
+
+x <- "this is a string"
+class(x)
+
+```
+
+You can also concatenate strings:
+
+```{r}
+
+my_list <- c("this","is","my","list")
+my_list
+
+```
+
+Strings must be surrounded by quotes, to signify that they are strings rather than executable code. Let's try the class of our earlier statement:
+
+```{r}
+
+class(Answer == 64)
+
+```
+
+This is *logical* data - something that can equate to TRUE or FALSE. It's important to be aware of different data types because if you use the wrong ones, you'll get errors. Try doing numerical operations on a logical variable:
+```{r}
+
+logical_variable <- class(Answer == 64)
+```
+Try this:
+
+```{r eval = FALSE}
+logical_variable * 2.
+```
+You should get an error... because you can't multiply TRUE by 2. Make sense? As you code R, I recommend checking the *class()* of variables you're operating with.. It'll help you learn quickly. A note about the 'store' section of RStudio - under the **History** tab, you can see all of the code you have executed - this is super useful if you make a mistake a need to go back! 
+
+<br>We've looked at the parts of RStudio where you store things (the **Environment** window) and say things (the **console** and **script**). The third and final part of RStudio is where you can *see* things - the panel in the bottom right corner. We're going to talk about **Packages**, because they're the backbone of everything you do in R. Sure, you can calculate some simple maths and make variables. But the really cool stuff comes when you use things *outside* of base R. These things are called **Packages** because essentially they are separate code wrapped up together in one neat package. Each package let's us do something new. Because these things aren't already in base R, we have to specifically download and import them. 
+
+For example, one of the packages we're going to use later on is called **ggplot2**. If you want to know more about a package, you can type **?*package name* ** into your console:
+
+```{r}
+?ggplot2()
+```
+
+Under the **Help** tab in this panel, you should see a description of this package. You can see that ggplot2 helps us create graphics! Click on the **Packages** tab. Here, you can see all the packages you have downloaded and a description of them. Can you see ggplot2? Let's import and equip it! The first time you ever use a new package, you have to download it - but you only have to do this once. There are a few different ways to do this. Try:
+
+```{r eval = FALSE}
+install.packages('ggplot2')
+```
+Make sure you pass the name of the package in quotations. Sometimes R tells you it needs to restart, which is fine. If this isn't working for some reason, another way is click the Install button under the Packages tab. Select *install from*: Repository (CRAN) and type ggplot2 in the Packages box.
+
+
+<img src="C:/Users/Greye/Music/bah/cran.png" width="300" height="200" />
+*One method to install a package from CRAN*
+
+CRAN stands for the [Comprehensive R Archives Network](https://cran.r-project.org/). It's the nexus of worldwide R servers which store the latest versions of R code, and we can use it to import the code for packages. However you choose to download ggplot2, there is a second step before you can use it. You can to *equip* it. Think of it as baking - we've put the pie in the oven but the oven isn't on, so nothing will happen. To equip our package, you can use either library() or require():
+
+```{r}
+library(ggplot2)
+```
+
+Note that here, we don't use quotations. After you run this code, you should see that the package ggplot2 has a tick in it's box in the Packages tab - because we've equipped it and it's ready to use. You only have to download a new package once - but you will have to re-equip it every time you start a new R session.
+
+<span style="color:blue">**TOP TIP**</span>: Like R, packages are maintained and improved by users around the world and you occasionally need to update them. The *Update* button under the Packages tab can take care of this for you.<br>
+
+I have only one final point to make before your first lesson is over! Maybe you want to use R to work on different documents and data sets which are stored on your computer. It's important to remember that R isn't all-knowing - it only looks where you tell it to look. At any given moment, you are telling R to be be looking in one directory - meaning one folder or *place* on your computer. To find out which working directory you're in, try this:
+
+```{r}
+getwd()
+```
+Are you currently in your expected directory? Although this may not matter now, this is important. When you save things, when you try and import data, when you look at files - unless you specify otherwise - R will only look in the directory it's in. If you want to change your working directory, you can use **setwd()**. Use forward slashes and '...' to go to a shallower directory.
+
+```{r}
+setwd("..")
+```
+There are other directory commands, but for general use these are the ones you need to know. Always be aware of where you are on your computer.
+
+<style>
+div.blue { 
+background-color:#e6f0ff; 
+border-radius: 5px; 
+padding: 20px;}
+</style>
+<div class = "blue">
+**Your first R in an HR lesson is over! Congratulations. Hopefully you now feel acquainted with:**<br> 
+- The general layout of RStudio<br>
+- What a variable is<br>
+- That R classifies different types of data
+- What packages are and how to use them
+- How to check your directory
+</div>
+
+
+
+***
+## *Data import and functions*
+##### Today's aim: Learn functions, data import and the Tidyverse ! {-}
+Learn the format of functions <br>
+Make your own functions<br>
+Understand factors<br>
+Learn data import<br>
+Become acquainted with the Tidyverse
+***
+
+So alright, you know how how to assign a variable. Let's really start cooking. This time we're going to learn factors and functions, two of the most useful tools in the R programmer's toolkit. First up, we'll tackle factors. Let me introduce you to a very useful feature of R. Remember, if you need to use a new function, but you're not sure how or what it is, you can ask R! Try it:
+
+```{r eval=F, echo=F}
+
+?function
+
+```
+
+If you run ?function(), the 'Help' window will show what that function is - it gives a description, syntax and all the arguments needed to use the function. Before we look at it, let's think about what a function is and when you might need it. We're going to use a dataframe to consider this. In the *R in an HR* repository, you'll find a file called **'Sequencing.xlsx**. Download it. We're going to import your first dataframe into R! To import a file, you need to be in the same directory as the file - meaning, the same folder as your file is. For directory options:<br>
+```{r eval=FALSE}
+
+getwd() # This gives you your current working directory
+
+setwd() # You can set the directory using this command - just put the full address of your diretory in here in quotes
+# Like this: setwd('C:/Users/This/Is/An/Example') 
+
+```
+
+So let's import our data. To do this, I'm going to introduce you to the R-user's essential toolkit: The Tidyverse! [Tidyverse](https://www.tidyverse.org/packages/) is a collection of packages that makes using R clean and tidy. They're specifically designed to make using large dataframes in R simple and clean. 
+
+![These are the packages that make up the Tidyverse ](http://d33wubrfki0l68.cloudfront.net/2834374971f416c892196363767fd7e1e87e2d1a/288a4/img/tidyverse/tidyverse_all.png)
+Each package does somethign different. For example, we're going to use **readr** to read our file into R. To explore what some of the others do, remember you can use **?package()** in your console. We will be using a selection of these throughout the course. First, you have to install and equip the package before you can use it - and you have to be in the sam directory as your file:
+
+```{r}
+install.packages('readr')
+library(readr)
+Sequencing <- read_csv('Sequencing.csv') # We need readr to use this function 'read_csv'
+
+```
+
+
+You will get some text back from that last line, which exemplifies why readr - and the Tidyverse - keep things tidy. Readr tells you what *type* of data it assumes each column in your dataframe should be. It thinks that columns **Amino acid** and **Mutation** contain character data. If you recall, we discussed these different data types earlier. So Readr sets your data according to what it best fits, and lets you know. This means that if data is imported as the wrong type, you can correct it before getting into messy errors.
+
+Let's have a look at the data. 
+
+```{r}
+
+head(Sequencing)
+```
+
+his is a table of common mutations at certain amino acids positions. Let's say it came from RNA seq data - or, if you're not a scientist, you can just stick to it being genetic mutations! 
+
+Readr thinks that **Position** is double data. What is double? If you're not sure, you can check the class:
+```{r}
+
+class(Sequencing$Position)
+
+```
+
+If we check the class, it says numeric. Look at this diagram of how data types encompass each other in R:
+
+![Data types in R](https://d33wubrfki0l68.cloudfront.net/1d1b4e1cf0dc5f6e80f621b0225354b0addb9578/6ee1c/diagrams/data-structures-overview.png)
+
+
+Numeric data is anything which is either and integer or a double. We briefly mentioned integers earlier - they are whole numbers. Doubles are double-precision floating point number, meaning they have more numbers after the decimal point. R usually converts to numeric for you, whenever appropriate. These classes seem appropriate, so we'll stick with them. 
+
+As a comparison, let's import our file using one of base R's functons. 
+```{r}
+Sequencing2 <- read.delim('Sequencing.csv')
+
+```
+
+You'll notice that in comparison, .....
+
+This table is only 6 rows, for simplicity, but often when working with data we'll be sifting through tables with thousands of entries. What if we want to sort through a column? One way to do this is by using factors. What are factors? Take initiative:
+
+```{r}
+
+?factor
+
+```
+
+You can think of factors as splitting up data into categories, which can be useful for sorting. Let's use the function and see what happens. The help window should tell you that  takes an input argument ('x'), which is a vector of data. Since our whole dataset is a matrix, let's take a vector to use - a single column. To select a column from a dataframe, you can use the $ character. Try it - factorise the Mutation column and call it back:
+
+```{R}
+factored_mutations <- factor(Sequencing$Mutation)
+class(factored_mutations)
+factored_mutations
+```
+
+Having gone through the factor() function, our vector is now of class factor. R returns the data, and importantly, outputs *levels.* These are the categories that our data is now put in. 
+
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *For loops*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Learn to use for loops!  {-}
+Learn the syntax of a for loop<br>
+Learn the additions of if and whilst statements<br>
+Use for and if loops in data analysis
+Introduction to the (x)apply family
+</div>
+***
+
+For loops are my favourite thing to do as a programmer. They are something most people learn early on (in a handful of languages) because they help you understand the semantics of whichever language you're in so well. In my opinion, they are one of the best tools to use when trying to *read* code in a human way. But...
+<br><br>
+I have a confession to make. <br><br>
+
+You shouldn't use them much in R. That's because for loops are used to perform some kind of action many times - for example, on every value in each row of a column in a dataset. So they are quite process-heavy, and there are often easier ways of doing this with simpler functions. We will explore these options at the end of this section. 
+
+So when do we use for loops? Let me give you a scenario! Let's generate a dataframe we can use.
+
+```{r}
+Numbers <- matrix(data = sample(1:100,50), ncol=1,nrow=50)
+head(Numbers)
+
+```
+<span style="color:blue">**TOP TIP**</span>: *Keep an eye out for functions! Here, I've used a function within a function. sample() allows you to literally sample a certain amount of elements from a given dataset. matrix() allows you to create a dataframe consisting of columsn and rows of a given number. Remember, you can always check out a function using ?function in your console<br>*
+
+Here, we have a list of 50 numbers sampled from between 1 and 100. Let's say we want to know what proportion of the sampled numbers were even instead of odd. We could do this using a for loop. The set-up of a for loop, when read aloud, goes like this:<br>
+
+for(each element in (a given list)){
+  if(this is true){
+    do this thing 
+} 
+
+The brackets and indentation are important - R won't run the loop properly without them. And the reason is that for loops can become pretty long, so everything needs to be clear. Try and build a for loop for *Numbers* to query how many elements are even. You can use any placeholder to specify the element - often people use letters:<br>
+for(i in (Numbers))<br>
+for(x in (Numbers))<br>
+for(Number in (Numbers))
+As long as you refer back to same letter or word later in the loop, anything goes!
+
+Now, in my skeleton for loop, the next step is 'do this thing.' But we don't want to treat all our elements the same - we need to first consider if they are odd or even. For this, we can use an **if statement.** If statements check **if** something is true before proceeding with the next code. They can be used anytime, not just in a for loop:
+
+```{r}
+
+if (class(Numbers) == "matrix"){
+  print("Our dataframe is a matrix!")
+}
+
+```
+So how can we check if a number is even? If you're thinking, *I bet there's a function for that,* you'd be right. A quick google could give you a few different suggestions, but I'll show you my favourite:
+
+```{r}
+for(i in (Numbers)){
+  if( i %% 2 == 0) {
+    print("EVEN")
+  }
+}
+```
+ 
+This operator '%%' is called modulus and gives you the remainder left after a division. For example:
+```{r}
+
+4 %% 3
+
+```
+ 
+ If a number is even, there is no remainder left after division with 2. However, this for loop isn't very helpful - it just gives us a list of 'EVENs,' rather than a clear proportion. We can rectify that by adding a counter that changes number every time the for loop runs. We can also evaluate anything that ISN'T true in our if statement using an **else statement**, which deals with anything that is FALSE.
+ 
+```{r}
+
+Even_Counter <- 0
+Odd_Counter <- 0 # START BY INITIALISING COUNTERS
+
+for(i in (Numbers)){
+  if( i %% 2 == 0) {
+    Even_Counter = Even_Counter + 1
+  } else {
+      Odd_Counter = Odd_Counter + 1
+  }
+}
+
+Even_Counter/(Even_Counter + Odd_Counter)
+ 
+```
+ 
+We can see that just under half of our numbers are even! 
+
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *Dataframes and Tidyverse*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Navigating dataframes!
+-Learn to import dataframes<br>
+-Learn to manipulate subsets of dataframes<br>
+-Start using the tidyverse<br>
+</div>
+***
+
+Stuff here!!
+
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *Data Representation*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Learn to plot data  {-}
+Import data into R<br>
+Manipulate the data<br>
+Get to grips with plotting options 
+</div>
+***
+
+Data representation is a critical part of being a scientist. So well done - you've managed to produce some data! But how do we show what it means?<br>
+In this section of the course, we're going to take some data and make gorgeous plots.<br><br>
+This is our example for today: you are a Biochemist, let's say. You study a virus, HIV, and want to show the number of papers published on 7 HIV proteins over ~30 years, to see which targets are the least studied. Think about what kind of plot would best show this data.
+<br><br>
+So, we have 2 categorical variables. If you came up with a **line graph**, you'd be right! No need to get fancy - a lot of the time in data representation, the simplest answer is the best. After all, *you want your reader to look at the graph and know what they're looking at!*
+
+```{r, echo=FALSE}
+library(plotly)
+```
+
+*This data was obtained from PubMed using the 'best search' option and filtering out reviews. I specifically searched for HIV and the gene name. *  <br>
+First, navigate to your working directory and import the dataset, which you can find at [this link](https://github.com/ctrumanshow/Learn_R_In_An_HouR) under the name **'Timeline2.csv.'** 
+
+```{r}
+#We will be using the tidyverse!
+library(ggplot2) #We will use ggplot2 for plotting!
+require(gridExtra) #We use this later to show 2 plots side-by-side
+
+setwd('C:/Users/Greye/Dropbox/DPHIL PHD UPDATED/PROGRAMMING + SCRIPTING/R IN A HR/ggridges') #Change this to indicate where your files are
+Data <- read_csv('Timeline2.csv') #Read in your file (read_csv is a wrapper function from readr in tidyverse, one reason we need it!)
+head(Data) #Let's look at the data. Try and describe what each of the columns mean 
+
+```
+
+
+
+<p>You'll notice that read_csv gives you a message. This tells you that since you did not pass the function what <div class="tooltip">type<span class="tooltiptext">Recall our discussion of different types of data: characters, integers, numeric etc! Revisit chapter x if this doesn't ring a bell.</span></div> of data each column is, it makes it's own assumptions. <i>Side note:</i> if you know the data already, you can specify the type when you read in the data, avoiding corrections later on:
+
+```{r}
+
+Data <- read_csv('Timeline2.csv', col_types = cols(
+    Year = col_character(),
+    Publications = col_integer(),
+    Gene = col_character()
+    ))
+    
+head(Data)
+```
+
+Compare the types (<i>shown in italics under column names</i>) before and after!
+
+But wait.. it's 2019 (when I wrote this!) - so we can't trust the number of publications, since more are likely to come out. Let's remove these entries. To do this, we have to tell R 2 things:<br>
+1) Find all rows with '2019' in the year column<br>
+2) Remove these rows
+We can do this in 1 step using dplyr, from tidyverse. Simply us the filter function to select your dataset (Data), and filter by any Year whose value does not equate (!=) to 2019, and re-assign this to the Data variable.
+
+```{r}
+Data <- filter(Data, Year != "2019")
+```
+
+Now, let's plot! 
+We will use pipe function '%>%' - this simply tells R to pass what is before the pipe to the commands that come after.
+We call ggplot first, to show we are plotting.
+Aes, or aesthetic is used to define what values we will be plotting.
+On our X axis, we will have the independent variable: year.
+On our Y, we will have our dependent variable: number of publications.
+We will also plot these variables for 7 differet genes, and will call the info from each gene a <i>group</i>.
+So we call our groups by Gene. We've told ggplot what we want to plot, now let's tellit what type of plotting to do - this is <i>geom_line</i>for a line graph. Let's see how it looks!
+
+
+```{r, results='hide', fig.show = 'hide'}
+
+Plot_First <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene)) + geom_line()
+Plot_First
+```
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Figure 1: This is the most basic plot generated by geom_line()."}
+library(shiny)
+div(ggplotly(Plot_First), align='center')
+```
+And we've made a graph! But if you showed this to a stranger, they wouldn't know what they were looking at!
+First of all, let's add a legend and colour the genes to show which is which.
+
+```{r fig.align='center', results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line()
+```
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Figure 2: Our plot definitely looks brighter!"}
+Two <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line()
+div(ggplotly(Two), align='center')
+
+```
+There! Looks a lot nicer. But whatsay we pick some nice custom colours and make it a little prettier!
+First, let's pick 7 colours that are clearly distinguished and nice to look at, and put them together - replace my colours with ones you've picked yourself! You can use built-in colours, like 'red' or 'blue.' To really personalise, I recommend [this resource](https://www.rapidtables.com/web/color/RGB_Color.html). We can add scale_color_manual on the end to tell the functions that we want to use our collection of colours.
+
+```{r  fig.align='center', fig.cap="Figure 3: These are now our custom colours!", results='hide', fig.show = 'hide'}
+Line_Colours <- c('#FF6B6B',"#FF6BE7", "#C96BFF", "#6B92FF", "#6BFF9C", "#FFC46B", "#008E8040")
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours) 
+```
+
+```{r, echo=FALSE}
+Three <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours)
+div(ggplotly(Three), align='center')
+```
+
+It's still not beautiful... let's change the theme. Themes are parameters you can add on which change the global graph look - good ggplot themes and you'll get a list! Try replacing theme_classic() with theme_void() and see what happens! Choose your favourite.
+
+```{r  fig.align='center', fig.cap="Figure 4: With the background removed, our lines are much clearer to see.", results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours) +theme_classic()
+```
+
+```{r, echo=FALSE}
+Four <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours) +theme_classic()
+div(ggplotly(Four), align='center')
+```
+
+But I think we should make the lines thicker so they are easier to see. We can do this by going straight to what makes the lines, geom_line, and adding a size parameter. Change '1.5' and see how the lines look. We can also add options like alpha, which changes how <i> transparent</i> lines are, and choose the linetype. Change this to 'dashed' and see how it looks!
+
+```{r, results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() 
+```
+
+```{r, echo=FALSE}
+Give <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() 
+div(ggplotly(Give), align='center')
+```
+But our x-axis is horrible! Let's rotate the labels. To do this, we add a new theme - axis.text.x - and change the horizontal justification to make things look neater
+
+```{r,  fig.align='center', fig.cap="Figure 6: There are now labels on our x-axis! ", results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r, echo=FALSE}
+Six <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+div(ggplotly(Six), align='center')
+```
+I think the x-axis is still a little crowded, let's only label every 5 years and rotate the labels to make them easier to read. I'll also add a base_size to the theme to everything is a little bigger
+```{r  fig.align='center', fig.cap="Figure 7: Look at how customization helps data visualisation!", results='hide', fig.show = 'hide' }
+
+Plot_Final <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic(base_size=22) + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_discrete(breaks=seq(1988, 2018, 5))
+```
+
+
+And you can go on and on to change things to suit your tastes! It's all a google away. Let's compare the before and after images.
+
+```{r fig6, fig.width = 20,  fig.align='center', fig.height=7, out.width=c('100%', '100%'), fig.show='hold'}
+
+
+grid.arrange(Plot_First, Plot_Final, ncol=2)
+
+```
+
+</div>

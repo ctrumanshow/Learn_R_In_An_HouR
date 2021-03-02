@@ -1,0 +1,87 @@
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *Functions & Factors*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Learn functions and facctors!
+Learn and use functions<br>
+Learn and use factors<br>
+</div>
+***
+
+So alright, you know how how to assign a variable. Let's really start cooking. This time we're going to learn factors and functions, two of the most useful tools in the R programmer's toolkit. First up, we'll tackle factors. Let me introduce you to a very useful feature of R. If you need to use a new function, but you're not sure how or what it is, you can ask R! Try it:
+
+```{r}
+
+?factor()
+
+```
+
+If you run ?function(), the 'Help' window will show what that function is - it gives a description, syntax and all the arguments needed. Before we look at it, when might you need a function? In the R in an HR repository, you'll find a file called 'Sequencing.xlsx. We're going to import it. So download it - and remember, to import a file, you need to be in the same directory as the file. For directory options:<br>
+```{r}
+
+getwd() # This gives you your current working directory
+
+# setwd() # You can set the directory using this command - just put the full address of your diretory in here in quotes
+# Like this: setwd('C:/Users/This/Is/An/Example') 
+
+```
+
+So let's import our data.
+
+```{r}
+library(readr)
+Sequencing <- read_csv('Sequencing.csv')
+
+```
+
+
+Let's have a look at the data. 
+
+```{r}
+
+head(Sequencing)
+```
+
+This is a table of common mutations at certain amino acids positions. Let's say it came from RNA seq data - or, if you're not a scientist, you can just stick to it being genomic mutations! We imported using tidyverse, so it's in tibble form. Under each header, you can see what the data types are. Sometimes R assumes the wrong data type, so let's check. Both string columns are characters, that's fine. The 'Position' column says <dbl>. What is that?
+
+```{r}
+
+class(Sequencing$Position)
+
+```
+
+If we check the class, it says numeric. Look at this diagram of how data types encompass each other in R:
+
+![Data types in R](https://d33wubrfki0l68.cloudfront.net/1d1b4e1cf0dc5f6e80f621b0225354b0addb9578/6ee1c/diagrams/data-structures-overview.png)
+
+
+Numeric data is anything which is either an Integer or a Double. We briefly mentioned integers earlier - they are whole numbers. Doubles are double-precision floating point number, meaning they have more numbers after the decimal point. R usually converts to numeric for you, whenever appropriate. These classes seem appropriate, so we'll stick with them. 
+```{r}
+Sequencing2 <- read.delim('Sequencing.csv')
+
+```
+This table is only 6 rows, for simplicity, but often when working with data we'll be sifting through tables with thousands of entries. What if we want to sort through a column? One way to do this is by using factors. What are factors? Take initiative:
+
+```{r}
+
+?factor
+
+```
+
+Let's just use the function and see what happens. The help window should tell you that  takes an input argument ('x'), which is a vector of data. Since our whole dataset is a matrix, let's take a vector to use - a single column.
+
+```{R}
+factored_mutations <- factor(Sequencing$Mutation)
+class(factored_mutations)
+factored_mutations
+```
+
+Having gone through the factor() function, our vector is now of class factor. R returns the data, and importantly, outputs *levels.* 

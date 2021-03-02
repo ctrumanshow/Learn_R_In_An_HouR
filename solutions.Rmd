@@ -1,0 +1,76 @@
+---
+title: " "
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 3
+    number_sections: true
+  rmdformats::material:
+    self_contained: true
+
+---
+
+<br><br><br><br><br>
+```{r include=FALSE}
+library(rmdformats)
+```
+***
+## Soutions
+***
+<br><br>
+***
+## The Basics
+***
+
+1) You can use any variable name to show that 23 is only divisible by itself and 1 but 22 is divisible by other numbers, eg:
+
+```{r}
+Not_Prime <- 22
+Prime <- 23
+
+Not_Prime / 2
+Prime / 2
+
+```
+
+Of course, in R there are a thousand ways to skin a cat. You can also use the numeric operator %%, which checks the remainder left after a division:
+
+```{r}
+Not_Prime %% 2
+Prime %% 2
+
+```
+
+We'll talk about *functions* later on, but of course with R if you want something done, there is probably an appropriate function simply one google away. I googled and found the funtion primes, which directly checks if something is a primer number. After installing, I simply used the is_prime function:
+
+```{r}
+library(primes)
+is_prime(Prime)
+is_prime(Not_Prime)
+```
+
+2) You can use an expression from the last exercise! Think about types of data - numerical, character, logical, integer:
+
+```{r}
+this_is_logical <- is_prime(Not_Prime)
+this_is_numerical <- 4
+this_is_character <- "hi there!"
+this_is_integer <- 1:24
+
+class(this_is_logical)
+class(this_is_numerical)
+class(this_is_character)
+class(this_is_integer)
+```
+
+Of course, there *are* more datatypes. A google might tell you about complex data, which may remind you of high schol algebra - it's where you can use imaginary numbers to replace data:
+
+```{r}
+this_is_complex = 2i + 1
+class(complex)
+
+```
+

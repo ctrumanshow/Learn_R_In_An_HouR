@@ -1,0 +1,450 @@
+---
+title: "  "
+output: 
+  html_document:
+    toc: true
+    toc_float:
+    toc_collapsed: true
+    toc_depth: 3
+    number_sections: true
+    theme: lumen
+---
+<br><br><br><br><br><br>
+
+***
+## *The Basics*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Start using R
+Download RStudio<br>
+Get acquainted with the environment<br>
+Get to know basic variables
+</div>
+***
+
+
+If you haven't already downloaded R, let's start.  <br>
+You can use R in different 'ways,' primarily: <br>
+(1) From the 'command line', which is called terminal in Windows. <br>
+(2) From RStudio, a Graphics User Interface (GUI), which has pretty pictures and interactable buttons<br>
+Naturally, this is where most users start. GUIs make things easier to use. So, go to [this link](https://rstudio.com/products/rstudio/download/) and download RStudio:<br><br>
+
+Open RStudio. You should see three main 'areas.' You can think of them as *'store,' 'see,'* and *'say'* areas. In the image below, the yellow box contains the script and console - where you *say* what your coding instructions are. The script (top part) is where write code and save it. When you run the code, it is processed in real time through the console, the box below. In the console, you will see the code run smoothly and output expected statements - or <span style="color:red">or red error messages</span>, if something was wrong. <br><br>
+
+
+![The general organisation of RStudio - yours will be much emptier than mine!](C:/Users/Greye/Music/bah/RStudio.png)
+
+To illustrate this, try typing 2+2 into the script area, and press 'Run' in the top right corner (make sure your cursor in on the same line as the code; you can also use ctrl+enter as a shorthand). You should see the console print your command and process it to print the answer '2'. If you want a simple answer, like 2+2, you can just type in the console. If you want to save your work, I'd recommend the script box for now. Try this in your RStudio:
+
+```{r}
+
+2 + 2
+
+```
+
+
+Be aware that new versions of R come out regularly, you can go to Help > Check For Updates in the toolbar to check this!<br>
+
+So, the next part: the 'store' area. Here, variables and data that you create are stored. Let's make a variable to illustrate this. A *variable* is simply a symbol to store data. Let's store the answer to *'2+8'* as a variable called *Answer*. You can assign a variable using an arrow:
+
+```{r}
+
+Answer <- 2 + 8
+
+```
+
+If we summon - or *call* - our variable *Answer*, we get the data behind the symbol:
+```{r}
+Answer
+```
+
+You can replace the word 'Answer' with anything you like. Be aware of some rules which are handy when assigning variables...
+
+***
+##### Rules for variables <br>
+(1) In R there are some symbols that come as part of the *base program* which are already defined. For example, mathematical operators like *=*. If you try and use these, you will get an error.<br>
+(2) R is case-sensitive. Try to call 'answer' and you won't get 4 - that's because we used a capital letter.<br>
+(3) Get in to the habit of good coding practices: don't name your variable vaR14i_mYF1RSTV4rIABL3 because it's not particularly human-readable or clear (you can find a list of common naming conventions  [here](https://www.chaseadams.io/most-common-programming-case-types/).) 
+
+***
+
+Look at the 'Environment' window, where you can store things - you should see your variable appear. Consider this window as your coding pantry. Useful tip: if your pantry is overflowing, cooking is harder. Stay organised! The brush button in this section clears all stored data in case you want to begin again. <br><br>
+
+Okay, so you now know how to assign a variable. Variables are your bread and butter, and you can do a lot with them. Try this in your RStudio:
+```{r}
+
+Variable1 <- 4
+
+Answer <- ( Variable1 * Variable1 * Variable1)
+Square_Root <- sqrt(Answer)
+
+```
+
+Here, we assign the value of 4 to a new variable called *Variable1.*
+We then multiply '*Variable1* by itself three times and square root the answer.
+
+I'm showing you 2 things here:
+(1) You can do mathematical equations on variables - R just looks at the data asigned behind the symbol.
+(2) You can re-value variables. We previously gave *Answer* the value of 10. If you look at the Environment window now, *Answer* has a value of 64. I mentioned errors before - hopefully you have seen nothing but black text in your console so far; when an error appears, it'll be red. Errors are incredibly useful. Let me show you why. Type this into your Studio;
+```{r}
+
+Answer == 64
+
+```
+
+What this statement says, is: *the variable Answer equates to the value 64*. R checks this and returns 'TRUE', since this statement is true. Now change '==' to '==='. You should see an error in your console:<br>
+<div style="text-align: center;" markdown="1"><span style="color:red">Error: unexpected '=' in "Answer ==="</span><br></div>
+R is telling us there are too many equals signs. This is why errors are so useful. If you're not sure how to code something, just try writing a statement. And then let R tell you where you are going wrong, so you can correct yourself. 
+
+But when you're being a badass coder on the day to day you won't be dealing exclusively with hiding numbers behind names. Let's talk about *types* of data. R considers multiple data types. Some of the most common:<br>
++Numeric
++Character
++Integer
++Logical
++Complex.<br>
+Let's start easy. You can find out what type or *class* data is by using the following function: class(*the data*).
+Let's try the variable we just made: 
+
+```{r}
+class(Answer)
+```
+Simple enough. The data is a number, which R recognises as numeric data.
+Character is equally simple. It's characters, words - also known as *strings* in coding:
+
+```{r}
+
+x <- "this is a string"
+class(x)
+
+```
+Let's try the class of our earlier statement:
+
+```{r}
+
+class(Answer == 64)
+
+```
+
+This is *logical* data - something that can equate to TRUE or FALSE. It's important to be aware of different data types because if you use the wrong ones, you'll get errors. Try doing numerical operations on a logical variable:
+```{r}
+
+logical_variable <- class(Answer == 64)
+```
+Try this:<br>
+<div style="text-align: center;" markdown="1">logical_variable * 2.</div><br>
+You should get an error... because you can't multiply TRUE by 2. Make sense? As you code R, I recommend checking the *class()* of variables you're operating with.. It'll help you learn quickly. Right!
+
+<br>
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+Your first bite-sized lesson in R is over! Hopefully you now feel acquainted with:<br> 
+- The general layout of RStudio<br>
+- What a variable is<br>
+- That R classifies different types of data
+
+</div>
+
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *Functions & Factors*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Learn functions and facctors!
+Learn and use functions<br>
+Learn and use factors<br>
+</div>
+***
+
+So alright, you know how how to assign a variable. Let's really start cooking. This time we're going to learn factors and functions, two of the most useful tools in the R programmer's toolkit. First up, we'll tackle factors. Let me introduce you to a very useful feature of R. If you need to use a new function, but you're not sure how or what it is, you can ask R! Try it:
+
+```{r}
+
+?factor()
+
+```
+
+If you run ?function(), the 'Help' window will show what that function is - it gives a description, syntax and all the arguments needed. Before we look at it, when might you need a function? In the R in an HR repository, you'll find a file called 'Sequencing.xlsx. We're going to import it. So download it - and remember, to import a file, you need to be in the same directory as the file. For directory options:<br>
+```{r}
+
+getwd() # This gives you your current working directory
+
+# setwd() # You can set the directory using this command - just put the full address of your diretory in here in quotes
+# Like this: setwd('C:/Users/This/Is/An/Example') 
+
+```
+
+So let's import our data.
+
+```{r}
+library(readr)
+Sequencing <- read_csv('Sequencing.csv')
+
+```
+
+
+Let's have a look at the data. 
+
+```{r}
+
+head(Sequencing)
+```
+
+This is a table of common mutations at certain amino acids positions. Let's say it came from RNA seq data - or, if you're not a scientist, you can just stick to it being genomic mutations! We imported using tidyverse, so it's in tibble form. Under each header, you can see what the data types are. Sometimes R assumes the wrong data type, so let's check. Both string columns are characters, that's fine. The 'Position' column says <dbl>. What is that?
+
+```{r}
+
+class(Sequencing$Position)
+
+```
+
+If we check the class, it says numeric. Look at this diagram of how data types encompass each other in R:
+
+![Data types in R](https://d33wubrfki0l68.cloudfront.net/1d1b4e1cf0dc5f6e80f621b0225354b0addb9578/6ee1c/diagrams/data-structures-overview.png)
+
+
+Numeric data is anything which is either an Integer or a Double. We briefly mentioned integers earlier - they are whole numbers. Doubles are double-precision floating point number, meaning they have more numbers after the decimal point. R usually converts to numeric for you, whenever appropriate. These classes seem appropriate, so we'll stick with them. 
+```{r}
+Sequencing2 <- read.delim('Sequencing.csv')
+
+```
+This table is only 6 rows, for simplicity, but often when working with data we'll be sifting through tables with thousands of entries. What if we want to sort through a column? One way to do this is by using factors. What are factors? Take initiative:
+
+```{r}
+
+?factor
+
+```
+
+Let's just use the function and see what happens. The help window should tell you that  takes an input argument ('x'), which is a vector of data. Since our whole dataset is a matrix, let's take a vector to use - a single column.
+
+```{R}
+factored_mutations <- factor(Sequencing$Mutation)
+class(factored_mutations)
+factored_mutations
+```
+
+Having gone through the factor() function, our vector is now of class factor. R returns the data, and importantly, outputs *levels.* 
+
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *For loops*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Learn to use for loops!
+Learn the syntax of a for loop<br>
+Learn the additions of if and whilst statements<br>
+Use for and if loops in data analysis
+</div>
+***
+
+For loops are my favourite thing to do as a programmer. They are something most people learn early on (in a handful of languages) because they help you understand the semantics of whichever language you're in so well. In my opinion, they are one of the best tools to use when trying to *read* code in a human way. But...
+<br><br>
+I have a confession to make. <br><br>
+
+You shouldn't use them much in R. 
+
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *Dataframes and Tidyverse*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Navigating dataframes!
+-Learn to import dataframes<br>
+-Learn to manipulate subsets of dataframes<br>
+-Start using the tidyverse<br>
+</div>
+***
+
+Stuff here!!
+
+---
+title: "  "
+
+---
+<br><br><br><br><br><br>
+
+***
+## *Data Representation*
+***
+
+***
+<div style="text-align: center;" markdown="1">
+##### Today's aim: Learn to plot data
+Import data into R<br>
+Manipulate the data<br>
+Get to grips with plotting options 
+</div>
+***
+
+Data representation is a critical part of being a scientist. So well done - you've managed to produce some data! But how do we show what it means?<br>
+In this section of the course, we're going to take some data and make gorgeous plots.<br><br>
+This is our example for today: you are a Biochemist, let's say. You study a virus, HIV, and want to show the number of papers published on 7 HIV proteins over ~30 years, to see which targets are the least studied. Think about what kind of plot would best show this data.
+<br><br>
+So, we have 2 categorical variables. If you came up with a **line graph**, you'd be right! No need to get fancy - a lot of the time in data representation, the simplest answer is the best. After all, *you want your reader to look at the graph and know what they're looking at!*
+
+```{r, echo=FALSE}
+library(plotly)
+```
+
+*This data was obtained from PubMed using the 'best search' option and filtering out reviews. I specifically searched for HIV and the gene name. *  <br>
+First, navigate to your working directory and import the dataset, which you can find at [this link](https://github.com/ctrumanshow/Learn_R_In_An_HouR) under the name **'Timeline2.csv.'** 
+
+```{r}
+library(tidyverse, warn.conflicts=FALSE) #We will be using the tidyverse!
+library(ggplot2, warn.conflicts=FALSE) #We will use ggplot2 for plotting!
+require(gridExtra,warn.conflicts=FALSE) #We use this later to show 2 plots side-by-side
+
+setwd('C:/Users/Greye/Dropbox/DPHIL PHD UPDATED/PROGRAMMING + SCRIPTING/R IN A HR/ggridges') #Change this to indicate where your files are
+Data <- read_csv('Timeline2.csv') #Read in your file (read_csv is a wrapper function from readr in tidyverse, one reason we need it!)
+view(Data) #Let's look at the data. Try and describe what each of the columns mean 
+
+```
+
+
+
+<p>You'll notice that read_csv gives you a message. This tells you that since you did not pass the function what <div class="tooltip">type<span class="tooltiptext">Recall our discussion of different types of data: characters, integers, numeric etc! Revisit chapter x if this doesn't ring a bell.</span></div> of data each column is, it makes it's own assumptions. <i>Side note:</i> if you know the data already, you can specify the type when you read in the data, avoiding corrections later on:
+
+```{r}
+
+Data <- read_csv('Timeline2.csv', col_types = cols(
+    Year = col_character(),
+    Publications = col_integer(),
+    Gene = col_character()
+    ))
+    
+head(Data)
+```
+
+Compare the types (<i>shown in italics under column names</i>) before and after!
+
+But wait.. it's 2019 (when I wrote this!) - so we can't trust the number of publications, since more are likely to come out. Let's remove these entries. To do this, we have to tell R 2 things:<br>
+1) Find all rows with '2019' in the year column<br>
+2) Remove these rows
+We can do this in 1 step using dplyr, from tidyverse. Simply us the filter function to select your dataset (Data), and filter by any Year whose value does not equate (!=) to 2019, and re-assign this to the Data variable.
+
+```{r}
+Data <- filter(Data, Year != "2019")
+```
+
+Now, let's plot! 
+We will use pipe function '%>%' - this simply tells R to pass what is before the pipe to the commands that come after.
+We call ggplot first, to show we are plotting.
+Aes, or aesthetic is used to define what values we will be plotting.
+On our X axis, we will have the independent variable: year.
+On our Y, we will have our dependent variable: number of publications.
+We will also plot these variables for 7 differet genes, and will call the info from each gene a <i>group</i>.
+So we call our groups by Gene. We've told ggplot what we want to plot, now let's tellit what type of plotting to do - this is <i>geom_line</i>for a line graph. Let's see how it looks!
+
+
+```{r, results='hide', fig.show = 'hide'}
+
+Plot_First <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene)) + geom_line()
+Plot_First
+```
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Figure 1: This is the most basic plot generated by geom_line()."}
+library(shiny)
+div(ggplotly(Plot_First), align='center')
+```
+And we've made a graph! But if you showed this to a stranger, they wouldn't know what they were looking at!
+First of all, let's add a legend and colour the genes to show which is which.
+
+```{r fig.align='center', results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line()
+```
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Figure 2: Our plot definitely looks brighter!"}
+Two <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line()
+div(ggplotly(Two), align='center')
+
+```
+There! Looks a lot nicer. But whatsay we pick some nice custom colours and make it a little prettier!
+First, let's pick 7 colours that are clearly distinguished and nice to look at, and put them together - replace my colours with ones you've picked yourself! You can use built-in colours, like 'red' or 'blue.' To really personalise, I recommend [this resource](https://www.rapidtables.com/web/color/RGB_Color.html). We can add scale_color_manual on the end to tell the functions that we want to use our collection of colours.
+
+```{r  fig.align='center', fig.cap="Figure 3: These are now our custom colours!", results='hide', fig.show = 'hide'}
+Line_Colours <- c('#FF6B6B',"#FF6BE7", "#C96BFF", "#6B92FF", "#6BFF9C", "#FFC46B", "#008E8040")
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours) 
+```
+
+```{r, echo=FALSE}
+Three <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours)
+div(ggplotly(Three), align='center')
+```
+
+It's still not beautiful... let's change the theme. Themes are parameters you can add on which change the global graph look - good ggplot themes and you'll get a list! Try replacing theme_classic() with theme_void() and see what happens! Choose your favourite.
+
+```{r  fig.align='center', fig.cap="Figure 4: With the background removed, our lines are much clearer to see.", results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours) +theme_classic()
+```
+
+```{r, echo=FALSE}
+Four <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line() + scale_colour_manual(values = Line_Colours) +theme_classic()
+div(ggplotly(Four), align='center')
+```
+
+But I think we should make the lines thicker so they are easier to see. We can do this by going straight to what makes the lines, geom_line, and adding a size parameter. Change '1.5' and see how the lines look. We can also add options like alpha, which changes how <i> transparent</i> lines are, and choose the linetype. Change this to 'dashed' and see how it looks!
+
+```{r, results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() 
+```
+
+```{r, echo=FALSE}
+Give <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() 
+div(ggplotly(Give), align='center')
+```
+But our x-axis is horrible! Let's rotate the labels. To do this, we add a new theme - axis.text.x - and change the horizontal justification to make things look neater
+
+```{r,  fig.align='center', fig.cap="Figure 6: There are now labels on our x-axis! ", results='hide', fig.show = 'hide' }
+
+Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r, echo=FALSE}
+Six <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+div(ggplotly(Six), align='center')
+```
+I think the x-axis is still a little crowded, let's only label every 5 years and rotate the labels to make them easier to read. I'll also add a base_size to the theme to everything is a little bigger
+```{r  fig.align='center', fig.cap="Figure 7: Look at how customization helps data visualisation!", results='hide', fig.show = 'hide' }
+
+Plot_Final <- Data %>% ggplot(aes(x = Year, y=Publications, group=Gene, color=Gene)) + geom_line(size=1.5, alpha=0.5, linetype="solid") + scale_colour_manual(values = Line_Colours) +theme_classic(base_size=22) + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_discrete(breaks=seq(1988, 2018, 5))
+```
+
+
+And you can go on and on to change things to suit your tastes! It's all a google away. Let's compare the before and after images.
+
+```{r fig6, fig.width = 20,  fig.align='center', fig.height=7, out.width=c('100%', '100%'), fig.show='hold'}
+
+
+grid.arrange(Plot_First, Plot_Final, ncol=2)
+
+```
+
